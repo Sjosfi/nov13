@@ -9,12 +9,23 @@ export class SongsService {
   constructor(db: PrismaService) {
     this.db = db
   }
+  
   create(createSongDto: CreateSongDto) {
-    return 'This action adds a new song';
+    return this.db.song.create({
+      data: createSongDto
+    });
   }
 
   findAll() {
     return this.db.song.findMany();
+  }
+
+  findFree() {
+    return this.db.song.findMany({
+      where: {
+        price: 0
+      }
+    });
   }
 
   findOne(id: number) {

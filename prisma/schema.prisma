@@ -16,6 +16,7 @@ datasource db {
 model song {
   id Int @id @default(autoincrement())
   title String
+  author String
   length Int 
   price Int
 }
